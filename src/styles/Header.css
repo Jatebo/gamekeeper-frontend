@@ -1,21 +1,24 @@
-.App {
-  text-align: center;
-}
 .Header {
   display: grid;
   background-color: black;
   width: 100%;
   grid-template-columns: 1fr 55px;
   grid-template-areas: "header  logo";
+  padding: 5px 0px;
+}
+
+.header__link {
+  text-decoration: none;
 }
 
 .header__main {
   font-family: "Press Start 2P", cursive, arial;
   font-size: 24px;
+  color: black;
   background-color: black;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 5px 0px;
   grid-area: header;
   display: flex;
   justify-content: center;
@@ -30,30 +33,4 @@
   grid-area: logo;
   margin: auto;
   box-shadow: 0px 0px 20px lime;
-}
-
-.Navbar {
-  background-color: maroon;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  gap: 2px 10px;
-  height: auto;
-  padding: auto;
-}
-
-.nav__link {
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  padding: 0 10px 0 10px;
-  background-color: lightgoldenrodyellow;
-  flex-grow: 0;
-  border-radius: 2px;
-
-  font-style: bold;
-  font-variant: small-caps;
 }

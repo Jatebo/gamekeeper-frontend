@@ -1,5 +1,30 @@
+import { useState } from "react";
+
+import { postComment } from "../utils/api";
+
 const WriteComment = () => {
-  return <p>WriteComment COMPONENT UNDER CONSTRUCTION</p>;
+  const [comment, setComment] = useState("");
+  console.log(comment);
+  const handlePostComment = (e) => {
+    e.preventDefault();
+    postComment(comment);
+  };
+
+  return (
+    <form>
+      {" "}
+      <label htmlFor="addComment"> add comment: </label>
+      <input
+        type="text"
+        id="comment"
+        value={comment}
+        onChange={(e) => {
+          setComment(e.target.value);
+        }}
+      ></input>
+      <button>comment</button>
+    </form>
+  );
 };
 
 export default WriteComment;

@@ -1,5 +1,4 @@
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Reviews.css";
 import useReviews from "../hooks/useReviews";
 
@@ -35,11 +34,11 @@ const Reviews = () => {
         >
           previous page
         </button>
-        <span>page {page}</span>
+        <span className="reviews__pg_text"> page {page} </span>
         <button
           className="reviews__pg__button"
           onClick={() => setPage((currPage) => currPage + 1)}
-          // disabled={reviews.length > 11}
+          disabled={reviews.length < 10}
         >
           next page
         </button>

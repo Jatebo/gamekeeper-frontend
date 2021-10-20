@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "../styles/WriteComment.css";
 import { postComment } from "../utils/api";
 
 const WriteComment = () => {

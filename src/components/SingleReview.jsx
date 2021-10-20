@@ -1,7 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
+import WriteComment from "./WriteComment";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -21,11 +22,15 @@ const SingleReview = () => {
     <>
       <h3 className="review__title">{review.title}</h3>
       <h5 className="review__designer">Designed by: {review.designer}</h5>
-      <img
-        className="review__img"
-        src={review.review_img_url}
-        alt={review.title}
-      />
+
+      <a href={review.review_img_url}>
+        <img
+          className="review__img"
+          src={review.review_img_url}
+          alt={review.title}
+        />
+      </a>
+
       <h5 className="review__author">Reviewer: {review.owner}</h5>
       <p className="review__text">{review.review_body}</p>
 
@@ -34,11 +39,7 @@ const SingleReview = () => {
       </ul>
       <li>sample comment</li>
 
-      <form>
-        add comment
-        <input></input>
-        <button>comment</button>
-      </form>
+      <WriteComment />
     </>
   );
 };

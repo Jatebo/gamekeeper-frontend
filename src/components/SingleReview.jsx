@@ -20,25 +20,25 @@ const SingleReview = () => {
   return (
     <>
       <h3 className="review__title">{review.title}</h3>
-      <h5>Designed by: {review.designer}</h5>
+      <h5 className="review__designer">Designed by: {review.designer}</h5>
       <img
         className="review__img"
         src={review.review_img_url}
         alt={review.title}
       />
-      <h5>Reviewer: {review.owner}</h5>
-      <p>{review.review_body}</p>
+      <h5 className="review__author">Reviewer: {review.owner}</h5>
+      <p className="review__text">{review.review_body}</p>
 
-      <p>
-        Count of comments will go here <button>expand/collapse comments</button>
-      </p>
       <ul>
         Comments count: <button>expand/collapse comments</button>{" "}
       </ul>
       <li>sample comment</li>
 
-      <section>write comment form</section>
-      <button>Post comment button</button>
+      <form>
+        add comment
+        <input></input>
+        <button>comment</button>
+      </form>
     </>
   );
 };

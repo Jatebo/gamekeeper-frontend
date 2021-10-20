@@ -1,46 +1,50 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchReviews } from "../utils/api";
 import "../styles/Reviews.css";
+import useReviews from "../hooks/useReviews";
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const category = useParams();
-  console.log(reviews);
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetchReviews(category)
-      .then((res) => {
-        setIsLoading(false);
-        setReviews(res);
-      })
-      .catch((err) => {
-        console.dir(err);
-      });
-  }, [category]);
+  const { reviews, isLoading, setPage, page } = useReviews();
 
   if (isLoading) return <p>loading...</p>;
 
   return (
-    <ul className="reviews__list">
-      {reviews.map((review) => {
-        return (
-          <li id={review.review_id}>
-            <Link to={`/reviews/${review.review_id}`}>
-              <img
-                className="reviews__img"
-                src={review.review_img_url}
-                alt={review.title}
-              />
-              <h4 className="reviews_title">{review.title}</h4>
-            </Link>
-            <p className="reviews__author">By: {review.owner}</p>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul className="reviews__list">
+        {reviews.map((review) => {
+          return (
+            <li key={review.review_id}>
+              <Link to={`/reviews/${review.review_id}`}>
+                <img
+                  className="reviews__img"
+                  src={review.review_img_url}
+                  alt={review.title}
+                />
+                <h4 className="reviews_title">{review.title}</h4>
+              </Link>
+              <p className="reviews__author">By: {review.owner}</p>
+            </li>
+          );
+        })}
+      </ul>
+      <section>
+        <button
+          className="reviews__pg__button"
+          onClick={() => setPage((currPage) => currPage - 1)}
+          disabled={page <= 1}
+        >
+          previous page
+        </button>
+        <span>page {page}</span>
+        <button
+          className="reviews__pg__button"
+          onClick={() => setPage((currPage) => currPage + 1)}
+          // disabled={reviews.length > 11}
+        >
+          next page
+        </button>
+      </section>
+    </>
   );
 };
 

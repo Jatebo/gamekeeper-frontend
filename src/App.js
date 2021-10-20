@@ -13,12 +13,14 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Navbar></Navbar>
+
       <Switch>
         <Route exact path="/">
+          <Navbar></Navbar>
           <Reviews />
         </Route>
         <Route exact path="/category/:category">
+          <Navbar></Navbar>
           <Reviews />
         </Route>
         <Route exact path="/reviews/:review_id">

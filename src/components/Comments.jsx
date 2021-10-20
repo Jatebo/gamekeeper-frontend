@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "../styles/Comments.css";
 import useComments from "../hooks/useComments";
-import CommentButtons from "./CommentButtons";
+import PageButtons from "./PageButtons";
 import { useState } from "react";
 
 const Comments = ({ commentCount }) => {
@@ -38,11 +38,11 @@ const Comments = ({ commentCount }) => {
                 })}
               </ul>
               {commentCount > 10 ? (
-                <CommentButtons
-                  comments={comments}
+                <PageButtons
+                  list={comments}
                   setPage={setPage}
                   page={page}
-                ></CommentButtons>
+                ></PageButtons>
               ) : null}
             </>
           ) : (

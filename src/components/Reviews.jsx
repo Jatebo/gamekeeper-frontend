@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import "../styles/Reviews.css";
 import useReviews from "../hooks/useReviews";
+import PageButtons from "./PageButtons";
 
 const Reviews = () => {
   const { reviews, isLoading, setPage, page } = useReviews();
@@ -33,23 +34,7 @@ const Reviews = () => {
           );
         })}
       </ul>
-      <section>
-        <button
-          className="reviews__pg__button"
-          onClick={() => setPage((currPage) => currPage - 1)}
-          disabled={page <= 1}
-        >
-          previous page
-        </button>
-        <span className="reviews__pg_text"> page {page} </span>
-        <button
-          className="reviews__pg__button"
-          onClick={() => setPage((currPage) => currPage + 1)}
-          disabled={reviews.length < 10}
-        >
-          next page
-        </button>
-      </section>
+      <PageButtons list={reviews} setPage={setPage} page={page}></PageButtons>
     </>
   );
 };

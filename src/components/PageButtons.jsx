@@ -1,4 +1,4 @@
-const CommentButtons = ({ page, setPage, comments }) => {
+const PageButtons = ({ page, setPage, list }) => {
   return (
     <section className="comments_buttons">
       <button
@@ -12,7 +12,7 @@ const CommentButtons = ({ page, setPage, comments }) => {
       <button
         className="comment__pg__button"
         onClick={() => setPage((currPage) => currPage + 1)}
-        disabled={comments.length < 10}
+        disabled={list.length < 10}
       >
         next page
       </button>
@@ -20,4 +20,4 @@ const CommentButtons = ({ page, setPage, comments }) => {
   );
 };
 
-export default CommentButtons;
+export default PageButtons;

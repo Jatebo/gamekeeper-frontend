@@ -27,3 +27,13 @@ export const fetchSingleReview = async (review_id) => {
 export const postComment = async (comment) => {
   console.log(comment);
 };
+
+export const fetchUsers = async () => {
+  const res = await Gamekeeper.get("/users");
+  return res.data.users;
+};
+
+export const fetchUserInfo = async (username) => {
+  const res = await Gamekeeper.get(`/users/${username}`);
+  return res.data.user;
+};

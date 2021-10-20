@@ -6,8 +6,9 @@ import { useState, useEffect } from "react";
 import { UserContext } from "./contexts/UserContext";
 import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview";
+import Login from "./components/Login";
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -18,25 +19,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header></Header>
-      {user ? <p>Welcome, {user}</p> : <p>Welcome, guest</p>}
-      <Switch>
-        <Route exact path="/">
-          <Navbar></Navbar>
-          <Reviews />
-        </Route>
-        <Route exact path="/category/:category">
-          <Navbar></Navbar>
-          <Reviews />
-        </Route>
-        <Route exact path="/reviews/:review_id">
-          <SingleReview />
-        </Route>
-        <Route></Route>
-      </Switch>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="App">
+        <Header></Header>
+        {user ? <p>Welcome, {user}</p> : <p>Welcome, guest</p>}
+        <Switch>
+          <Route exact path="/">
+            <Navbar></Navbar>
+            <Reviews />
+          </Route>
+          <Route exact path="/category/:category">
+            <Navbar></Navbar>
+            <Reviews />
+          </Route>
+          <Route exact path="/reviews/:review_id">
+            <SingleReview />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route>
+            <p>404: Page not found :( </p>
+          </Route>
+        </Switch>
+      </div>
+    </UserContext.Provider>
   );
-}
+};
 
 export default App;

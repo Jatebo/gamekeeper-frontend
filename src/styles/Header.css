@@ -34,3 +34,16 @@
   margin: auto;
   box-shadow: 0px 0px 20px lime;
 }
+
+.signIn__btn {
+  text-align: center;
+  font-family: "Press Start 2P", cursive, arial;
+  font-size: 9px;
+  color: lime;
+  text-shadow: 0px 0px 5px lime;
+  background-color: rgba(0, 255, 0, 0.434);
+  border-radius: 50%;
+  width: 50px;
+  height: 100%;
+  /* box-shadow: 0px 0px 20px lime; */
+}

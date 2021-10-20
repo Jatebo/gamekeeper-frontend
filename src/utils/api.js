@@ -23,3 +23,7 @@ export const fetchSingleReview = async (review_id) => {
   const res = await Gamekeeper.get(`/reviews/${review_id}`);
   return res.data.review;
 };
+
+export const postComment = async (comment) => {
+  console.log(comment);
+};

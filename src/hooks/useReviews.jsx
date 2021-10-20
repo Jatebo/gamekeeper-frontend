@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const useReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -16,7 +16,6 @@ const useReviews = () => {
       .then((reviewData) => {
         setIsLoading(false);
         setReviews(reviewData);
-        console.log(reviewData, "<--- review data");
         if (reviewData.length === 0 && page > 1)
           setPage((currPage) => currPage - 1);
       })

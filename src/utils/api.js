@@ -37,3 +37,14 @@ export const fetchUserInfo = async (username) => {
   const res = await Gamekeeper.get(`/users/${username}`);
   return res.data.user;
 };
+
+export const fetchComments = async (review_id, page) => {
+  console.log(review_id);
+  const limit = 10;
+
+  const res = await Gamekeeper.get(`/reviews/${review_id}/comments`, {
+    params: { limit, p: page },
+  });
+  console.log(res);
+  return res.data.comments;
+};

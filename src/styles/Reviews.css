@@ -1,10 +1,11 @@
-
-
 .reviews__list {
-    list-style-type: none;
-  }
-  
-  .reviews__img {
-    width: 100px;
-  }
-  
+  list-style-type: none;
+}
+
+.reviews__img {
+  width: 100px;
+}
+
+.review__noComment {
+  color: black;
+}

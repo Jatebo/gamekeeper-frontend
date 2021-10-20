@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
 import WriteComment from "./WriteComment";
+import Comments from "./Comments";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -22,7 +23,6 @@ const SingleReview = () => {
     <>
       <h3 className="review__title">{review.title}</h3>
       <h5 className="review__designer">Designed by: {review.designer}</h5>
-
       <a href={review.review_img_url}>
         <img
           className="review__img"
@@ -30,15 +30,9 @@ const SingleReview = () => {
           alt={review.title}
         />
       </a>
-
       <h5 className="review__author">Reviewer: {review.owner}</h5>
       <p className="review__text">{review.review_body}</p>
-
-      <ul>
-        Comments count: <button>expand/collapse comments</button>{" "}
-      </ul>
-      <li>sample comment</li>
-
+      <Comments commentCount={review.comment_count} />
       <WriteComment />
     </>
   );

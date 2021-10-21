@@ -15,8 +15,6 @@ const WriteReview = () => {
   const [isError, setIsError] = useState(false);
   const [posted, setPosted] = useState(false);
 
-  console.log(newReview);
-
   const handlePostComment = (e) => {
     setPosted(false);
     setIsError(false);

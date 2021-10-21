@@ -1,13 +1,14 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
+import "../styles/WelcomeMsg.css";
 
 const WelcomeMsg = () => {
   const { user, setUser } = useContext(UserContext);
   const [signedOut, setSignedOut] = useState(false);
   const [pushedWriteReview, setPushedWriteReview] = useState(false);
 
-  const { path } = useParams();
+  const path = useLocation();
   console.log(path);
 
   useEffect(() => {
@@ -38,6 +39,9 @@ const WelcomeMsg = () => {
             onClick={() => {
               setPushedWriteReview(true);
             }}
+            className={
+              path.pathname === "/write-review" ? "button__hide" : null
+            }
           >
             {" "}
             Write review

@@ -7,6 +7,8 @@ import { UserContext } from "./contexts/UserContext";
 import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview";
 import Login from "./components/Login";
+import WelcomeMsg from "./components/WelcomeMsg";
+import WriteReview from "./components/WriteReview";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -20,30 +22,19 @@ const App = () => {
     }
   }, []);
 
-  const signOut = (e) => {
-    console.log("Pressed Sign Out");
-    setUser(null);
-    localStorage.removeItem("loggedInUser");
-  };
-
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
         <Header userImg={user ? user.avatar_url : "null"} />
-        <div className="welcome__msg">
-          {user ? (
-            <div>
-              <p>Welcome, {user}</p>
-              <button onClick={() => signOut()}> sign out</button>
-            </div>
-          ) : (
-            <p>Welcome, guest</p>
-          )}
-        </div>
+        <WelcomeMsg></WelcomeMsg>
         <Switch>
           <Route exact path="/">
             <Navbar />
             <Reviews />
+          </Route>
+          <Route exact path="/write-review">
+            <Navbar />
+            <WriteReview />
           </Route>
           <Route exact path="/category/:category">
             <Navbar />

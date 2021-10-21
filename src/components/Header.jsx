@@ -18,7 +18,7 @@ const Header = ({ userImg }) => {
       <Link className="header__link" to="/">
         <h1 className="header__main">GAMEKEEPER</h1>
       </Link>
-      <section>
+      <>
         {user ? (
           <img
             className="login__img"
@@ -30,7 +30,7 @@ const Header = ({ userImg }) => {
             <button className="signIn__btn"> Sign in</button>
           </Link>
         )}
-      </section>
+      </>
     </header>
   );
 };

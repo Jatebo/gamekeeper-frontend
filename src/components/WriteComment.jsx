@@ -11,10 +11,11 @@ const WriteComment = () => {
   };
 
   return (
-    <form>
+    <form autocomplete="off">
       {" "}
       <label htmlFor="addComment"> add comment: </label>
       <input
+        className="comment__box"
         type="text"
         id="comment"
         value={comment}

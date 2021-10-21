@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "../styles/Reviews.css";
 import useReviews from "../hooks/useReviews";
 import PageButtons from "./PageButtons";
+import Voter from "./Voter";
 
 const Reviews = () => {
   const { reviews, isLoading, setPage, page } = useReviews();
@@ -21,6 +22,12 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li key={review.review_id}>
+              <Voter
+                item_id={review.review_id}
+                votes={review.votes}
+                voterType="review"
+                className="reviews__voter"
+              />
               <Link to={`/reviews/${review.review_id}`}>
                 <img
                   className="reviews__img"

@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import useComments from "../hooks/useComments";
 import "../styles/WriteComment.css";
 import { postComment } from "../utils/api";
 

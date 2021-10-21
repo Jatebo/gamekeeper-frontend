@@ -1,23 +1,47 @@
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
 import Comments from "./Comments";
 import Voter from "./Voter";
+import ItemDeleter from "./ItemDeleter";
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
 
 const SingleReview = () => {
+  const { user } = useContext(UserContext);
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
+  const [errorType, setErrorType] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+    setErrorType(0);
     fetchSingleReview(review_id)
       .then((result) => {
         setSingleReview(result);
+        setCommentCount(result.comment_count);
+        setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 404) {
+          setErrorType(404);
+          setIsLoading(false);
+        }
+        console.dir(err, "<---- err in single review");
       });
   }, [review_id]);
+
+  if (isLoading) {
+    return <p>Loading review</p>;
+  }
+
+  if (errorType === 404) {
+    return <Redirect push to={{ pathname: "/404-not-found" }} />;
+  }
+
   return (
     <>
       <h3 className="review__title">{singleReview.title}</h3>
@@ -34,9 +58,16 @@ const SingleReview = () => {
           alt={singleReview.title}
         />
       </a>
-      <h5 className="review__author">Reviewer: {singleReview.owner}</h5>
+      <h5 className="review__author">
+        Reviewer: {singleReview.owner}
+        <span>
+          {user === singleReview.owner ? (
+            <ItemDeleter item_id={review_id} type="review" />
+          ) : null}
+        </span>
+      </h5>
       <p className="review__text">{singleReview.review_body}</p>
-      <Comments commentCount={singleReview.comment_count} />
+      <Comments commentCount={commentCount} setCommentCount={setCommentCount} />
     </>
   );
 };

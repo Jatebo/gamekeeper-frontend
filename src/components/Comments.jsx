@@ -9,7 +9,7 @@ import ItemDeleter from "./ItemDeleter";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
-const Comments = ({ commentCount }) => {
+const Comments = ({ commentCount, setCommentCount }) => {
   const { user } = useContext(UserContext);
   const { review_id } = useParams();
   const { comments, setComments, isLoading, setPage, page } =
@@ -28,6 +28,7 @@ const Comments = ({ commentCount }) => {
               return (
                 <li key={comment.comment_id}>
                   <Voter
+                    className="comment_deleter"
                     item_id={comment.comment_id}
                     votes={comment.votes}
                     voterType="comment"
@@ -40,6 +41,7 @@ const Comments = ({ commentCount }) => {
                       type="comment"
                       itemState={comments}
                       setItemState={setComments}
+                      setCommentCount={setCommentCount}
                     />
                   ) : null}
                 </li>
@@ -61,6 +63,7 @@ const Comments = ({ commentCount }) => {
         review_id={review_id}
         comments={comments}
         setComments={setComments}
+        setCommentCount={setCommentCount}
       ></WriteComment>
     </div>
   );

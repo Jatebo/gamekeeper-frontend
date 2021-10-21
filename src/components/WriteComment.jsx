@@ -3,7 +3,12 @@ import { UserContext } from "../contexts/UserContext";
 import "../styles/WriteComment.css";
 import { postComment } from "../utils/api";
 
-const WriteComment = ({ review_id, comments, setComments }) => {
+const WriteComment = ({
+  review_id,
+  comments,
+  setComments,
+  setCommentCount,
+}) => {
   const { user } = useContext(UserContext);
   const [comment, setComment] = useState("");
 
@@ -20,6 +25,9 @@ const WriteComment = ({ review_id, comments, setComments }) => {
           commentsCopy.push(res.comment);
           return commentsCopy;
         });
+      })
+      .then(() => {
+        setCommentCount(comments.length);
       })
       .catch((err) => {
         console.log(err);

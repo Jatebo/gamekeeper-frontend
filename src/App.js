@@ -17,7 +17,6 @@ const App = () => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");
     if (prevLoggedInUser) {
       const userObj = JSON.parse(localStorage.getItem("loggedInUser"));
-      console.log(userObj);
       setUser(userObj.username);
     }
   }, []);
@@ -26,7 +25,7 @@ const App = () => {
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
         <Header userImg={user ? user.avatar_url : "null"} />
-        <WelcomeMsg></WelcomeMsg>
+        <WelcomeMsg />
         <Switch>
           <Route exact path="/">
             <Navbar />

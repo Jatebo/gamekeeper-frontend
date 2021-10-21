@@ -9,9 +9,11 @@ import SingleReview from "./components/SingleReview";
 import Login from "./components/Login";
 import WelcomeMsg from "./components/WelcomeMsg";
 import WriteReview from "./components/WriteReview";
+import { CategoriesContext } from "./contexts/CategoriesContext";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");
@@ -23,34 +25,36 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className="App">
-        <Header userImg={user ? user.avatar_url : "null"} />
-        <WelcomeMsg />
-        <Switch>
-          <Route exact path="/">
-            <Navbar />
-            <Reviews />
-          </Route>
-          <Route exact path="/write-review">
-            <Navbar />
-            <WriteReview />
-          </Route>
-          <Route exact path="/category/:category">
-            <Navbar />
-            <Reviews />
-          </Route>
-          <Route exact path="/reviews/:review_id">
-            <SingleReview />
-          </Route>
-          <Route exact path="/login">
-            <Navbar />
-            <Login />
-          </Route>
-          <Route>
-            <p>404: Page not found :( </p>
-          </Route>
-        </Switch>
-      </div>
+      <CategoriesContext.Provider value={{ categories, setCategories }}>
+        <div className="App">
+          <Header userImg={user ? user.avatar_url : "null"} />
+          <WelcomeMsg />
+          <Switch>
+            <Route exact path="/">
+              <Navbar />
+              <Reviews />
+            </Route>
+            <Route exact path="/write-review">
+              <Navbar />
+              <WriteReview />
+            </Route>
+            <Route exact path="/category/:category">
+              <Navbar />
+              <Reviews />
+            </Route>
+            <Route exact path="/reviews/:review_id">
+              <SingleReview />
+            </Route>
+            <Route exact path="/login">
+              <Navbar />
+              <Login />
+            </Route>
+            <Route>
+              <p>404: Page not found :( </p>
+            </Route>
+          </Switch>
+        </div>
+      </CategoriesContext.Provider>
     </UserContext.Provider>
   );
 };

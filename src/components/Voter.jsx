@@ -11,7 +11,7 @@ const Voter = ({ item_id, votes, voterType }) => {
     (voterType === "review"
       ? patchReviewVotes(item_id, 1)
       : patchCommentVotes(item_id, 1)
-    ).catch(() => {
+    ).catch((err) => {
       setIsError(true);
       setVoteChange((currentKudosChange) => currentKudosChange);
     });

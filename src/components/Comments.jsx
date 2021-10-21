@@ -5,11 +5,16 @@ import PageButtons from "./PageButtons";
 import Voter from "./Voter";
 import ToggleComments from "./ToggleComments";
 import WriteComment from "./WriteComment";
+import ItemDeleter from "./ItemDeleter";
+import { UserContext } from "../contexts/UserContext";
+import { useContext } from "react";
 
 const Comments = ({ commentCount }) => {
+  const { user } = useContext(UserContext);
   const { review_id } = useParams();
   const { comments, setComments, isLoading, setPage, page } =
     useComments(review_id);
+  console.log(comments);
 
   if (isLoading) return <p>loading...</p>;
 
@@ -29,6 +34,14 @@ const Comments = ({ commentCount }) => {
                   />
                   <p className="comment__author">{comment.author}: </p>
                   <p className="comment_body">{comment.body}</p>
+                  {user === comment.author ? (
+                    <ItemDeleter
+                      item_id={comment.comment_id}
+                      type="comment"
+                      itemState={comments}
+                      setItemState={setComments}
+                    />
+                  ) : null}
                 </li>
               );
             })}

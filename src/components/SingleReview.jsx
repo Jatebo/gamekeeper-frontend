@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
-import WriteComment from "./WriteComment";
 import Comments from "./Comments";
 import Voter from "./Voter";
 

@@ -59,7 +59,6 @@ export const patchReviewVotes = async (review_id, votes) => {
 };
 
 export const patchCommentVotes = async (comment_id, votes) => {
-  console.log(comment_id);
   const res = await Gamekeeper.patch(`/comments/${comment_id}`, {
     inc_votes: votes,
   });
@@ -69,4 +68,14 @@ export const patchCommentVotes = async (comment_id, votes) => {
 export const postReview = async (review) => {
   const res = await Gamekeeper.post(`reviews/`, review);
   return res.data.review;
+};
+
+export const deleteReview = async (review_id) => {
+  const res = await Gamekeeper.delete(`/reviews/${review_id}`);
+  return res;
+};
+
+export const deleteComment = async (comment_id) => {
+  const res = await Gamekeeper.delete(`/comments/${comment_id}`);
+  return res;
 };

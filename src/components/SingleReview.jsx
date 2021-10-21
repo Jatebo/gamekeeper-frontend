@@ -38,7 +38,6 @@ const SingleReview = () => {
       <h5 className="review__author">Reviewer: {singleReview.owner}</h5>
       <p className="review__text">{singleReview.review_body}</p>
       <Comments commentCount={singleReview.comment_count} />
-      <WriteComment review_id={review_id} />
     </>
   );
 };

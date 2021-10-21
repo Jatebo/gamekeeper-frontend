@@ -1,3 +1,7 @@
 .comment__box {
   height: 100px;
 }
+
+.hide__buttons {
+  display: none;
+}

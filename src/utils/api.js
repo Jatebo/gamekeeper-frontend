@@ -24,8 +24,12 @@ export const fetchSingleReview = async (review_id) => {
   return res.data.review;
 };
 
-export const postComment = async (comment) => {
-  console.log(comment);
+export const postComment = async (review_id, comment, username) => {
+  const res = await Gamekeeper.post(`reviews/${review_id}/comments`, {
+    username,
+    body: comment,
+  });
+  return res.data;
 };
 
 export const fetchUsers = async () => {
@@ -39,13 +43,11 @@ export const fetchUserInfo = async (username) => {
 };
 
 export const fetchComments = async (review_id, page) => {
-  console.log(review_id);
   const limit = 10;
 
   const res = await Gamekeeper.get(`/reviews/${review_id}/comments`, {
     params: { limit, p: page },
   });
-  console.log(res);
   return res.data.comments;
 };
 

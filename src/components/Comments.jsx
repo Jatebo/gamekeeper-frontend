@@ -4,10 +4,12 @@ import useComments from "../hooks/useComments";
 import PageButtons from "./PageButtons";
 import Voter from "./Voter";
 import ToggleComments from "./ToggleComments";
+import WriteComment from "./WriteComment";
 
 const Comments = ({ commentCount }) => {
   const { review_id } = useParams();
-  const { comments, isLoading, setPage, page } = useComments(review_id);
+  const { comments, setComments, isLoading, setPage, page } =
+    useComments(review_id);
 
   if (isLoading) return <p>loading...</p>;
 
@@ -42,6 +44,11 @@ const Comments = ({ commentCount }) => {
       ) : (
         <p className="review__noComment"> Be the first to comment!</p>
       )}
+      <WriteComment
+        review_id={review_id}
+        comments={comments}
+        setComments={setComments}
+      ></WriteComment>
     </div>
   );
 };

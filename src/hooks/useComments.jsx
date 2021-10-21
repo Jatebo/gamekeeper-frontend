@@ -21,7 +21,7 @@ const useComments = (review_id) => {
       });
   }, [review_id, page]);
 
-  return { comments, isLoading, setPage, page };
+  return { comments, setComments, isLoading, setPage, page };
 };
 
 export default useComments;

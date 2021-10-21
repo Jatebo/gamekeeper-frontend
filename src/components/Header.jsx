@@ -10,13 +10,9 @@ const Header = ({ userImg }) => {
   useEffect(() => {
     if (user) {
       const userObj = JSON.parse(localStorage.getItem("loggedInUser"));
-      console.log(userObj);
       setAvatarURL(userObj.avatar_url);
     }
   }, [user]);
-
-  console.log(avatarURL, "<--- prop in header");
-
   return (
     <header className="Header">
       <Link className="header__link" to="/">

@@ -3,6 +3,7 @@ import "../styles/Comments.css";
 import useComments from "../hooks/useComments";
 import PageButtons from "./PageButtons";
 import { useState } from "react";
+import Voter from "./Voter";
 
 const Comments = ({ commentCount }) => {
   const { review_id } = useParams();
@@ -25,12 +26,17 @@ const Comments = ({ commentCount }) => {
           {showComments ? (
             <>
               <button className="toggle__comments" onClick={toggleComments}>
-                collapse comments
+                hide comments
               </button>
               <ul className="comments__list">
                 {comments.map((comment) => {
                   return (
                     <li key={comment.comment_id}>
+                      <Voter
+                        item_id={comment.comment_id}
+                        votes={comment.votes}
+                        voterType="comment"
+                      />
                       <p className="comment__author">{comment.author}: </p>
                       <p className="comment_body">{comment.body}</p>
                     </li>
@@ -48,7 +54,7 @@ const Comments = ({ commentCount }) => {
           ) : (
             <>
               <button className="toggle__comments" onClick={toggleComments}>
-                expand comments
+                show comments
               </button>
             </>
           )}

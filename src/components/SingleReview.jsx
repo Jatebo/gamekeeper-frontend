@@ -4,16 +4,17 @@ import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
 import WriteComment from "./WriteComment";
 import Comments from "./Comments";
+import Voter from "./Voter";
 
 const SingleReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState([]);
+  console.log(review_id);
 
   useEffect(() => {
     fetchSingleReview(review_id)
       .then((result) => {
         setReview(result);
-        console.log(result);
       })
       .catch((err) => {
         console.log(err);
@@ -23,6 +24,11 @@ const SingleReview = () => {
     <>
       <h3 className="review__title">{review.title}</h3>
       <h5 className="review__designer">Designed by: {review.designer}</h5>
+      <Voter
+        item_id={review.review_id}
+        votes={review.votes}
+        voterType="review"
+      />
       <a href={review.review_img_url}>
         <img
           className="review__img"

@@ -22,8 +22,9 @@ const WriteComment = () => {
           setComment(e.target.value);
         }}
       ></input>
-      <button>add comment</button>{" "}
+      <button className="comment__btn">add comment</button>{" "}
       <button
+        className="cancel__btn"
         onClick={(e) => {
           setComment("");
         }}

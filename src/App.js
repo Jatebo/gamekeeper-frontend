@@ -1,5 +1,5 @@
 import "./styles/App.css";
-import { Switch, Route, } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import { useState, useEffect } from "react";
@@ -10,9 +10,6 @@ import Login from "./components/Login";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const userObj = JSON.parse(localStorage.getItem("loggedInUser"));
-
-  console.log(userObj);
 
   useEffect(() => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");

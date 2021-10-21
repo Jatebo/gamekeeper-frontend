@@ -48,3 +48,18 @@ export const fetchComments = async (review_id, page) => {
   console.log(res);
   return res.data.comments;
 };
+
+export const patchReviewVotes = async (review_id, votes) => {
+  const res = await Gamekeeper.patch(`/reviews/${review_id}`, {
+    inc_votes: votes,
+  });
+  return res.data;
+};
+
+export const patchCommentVotes = async (comment_id, votes) => {
+  console.log(comment_id);
+  const res = await Gamekeeper.patch(`/comments/${comment_id}`, {
+    inc_votes: votes,
+  });
+  return res.data;
+};

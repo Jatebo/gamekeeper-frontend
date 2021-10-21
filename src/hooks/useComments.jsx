@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
-import { useParams } from "react-router-dom";
 
 const useComments = (review_id) => {
   const [comments, setComments] = useState([]);

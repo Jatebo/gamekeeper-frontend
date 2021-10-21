@@ -65,3 +65,8 @@ export const patchCommentVotes = async (comment_id, votes) => {
   });
   return res.data;
 };
+
+export const postReview = async (review) => {
+  const res = await Gamekeeper.post(`reviews/`, review);
+  return res.data.review;
+};

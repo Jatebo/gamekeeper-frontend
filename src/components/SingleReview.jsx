@@ -8,13 +8,12 @@ import Voter from "./Voter";
 
 const SingleReview = () => {
   const { review_id } = useParams();
-  const [review, setReview] = useState([]);
-  console.log(review_id);
+  const [singleReview, setSingleReview] = useState([]);
 
   useEffect(() => {
     fetchSingleReview(review_id)
       .then((result) => {
-        setReview(result);
+        setSingleReview(result);
       })
       .catch((err) => {
         console.log(err);
@@ -22,24 +21,24 @@ const SingleReview = () => {
   }, [review_id]);
   return (
     <>
-      <h3 className="review__title">{review.title}</h3>
-      <h5 className="review__designer">Designed by: {review.designer}</h5>
+      <h3 className="review__title">{singleReview.title}</h3>
+      <h5 className="review__designer">Designed by: {singleReview.designer}</h5>
       <Voter
-        item_id={review.review_id}
-        votes={review.votes}
+        item_id={singleReview.review_id}
+        votes={singleReview.votes}
         voterType="review"
       />
-      <a href={review.review_img_url}>
+      <a href={singleReview.review_img_url}>
         <img
           className="review__img"
-          src={review.review_img_url}
-          alt={review.title}
+          src={singleReview.review_img_url}
+          alt={singleReview.title}
         />
       </a>
-      <h5 className="review__author">Reviewer: {review.owner}</h5>
-      <p className="review__text">{review.review_body}</p>
-      <Comments commentCount={review.comment_count} />
-      <WriteComment />
+      <h5 className="review__author">Reviewer: {singleReview.owner}</h5>
+      <p className="review__text">{singleReview.review_body}</p>
+      <Comments commentCount={singleReview.comment_count} />
+      <WriteComment review_id={review_id} />
     </>
   );
 };

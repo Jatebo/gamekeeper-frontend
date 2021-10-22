@@ -14,7 +14,6 @@ const Reviews = () => {
   const [sort, setSort] = useState({});
   const { reviews, isLoading, setPage, page } = useReviews(sort);
   const params = useParams();
-  console.log(user);
   const storedSort = localStorage.getItem("sort");
 
   if (isLoading) return <p>loading...</p>;

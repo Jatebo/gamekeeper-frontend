@@ -6,7 +6,6 @@ const ReviewDeleter = ({ review_id }) => {
   const [deletedReview, setDeletedReview] = useState(false);
 
   const [isError, setIsError] = useState(false);
-  console.log(review_id);
 
   const deleteHandler = () => {
     setDeletedReview(false);

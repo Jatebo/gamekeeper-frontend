@@ -3,11 +3,15 @@ import "../styles/Reviews.css";
 import useReviews from "../hooks/useReviews";
 import PageButtons from "./PageButtons";
 import Voter from "./Voter";
+import ReviewSorter from "./ReviewSorter";
+import { useState } from "react";
 
 const Reviews = () => {
-  const { reviews, isLoading, setPage, page } = useReviews();
-
+  const [sort, setSort] = useState({});
+  const { reviews, isLoading, setPage, page } = useReviews(sort);
   const params = useParams();
+
+  const storedSort = localStorage.getItem("sort");
 
   if (isLoading) return <p>loading...</p>;
 
@@ -18,6 +22,12 @@ const Reviews = () => {
       ) : (
         <h3>all reviews</h3>
       )}
+      {storedSort ? (
+        <p>show reviews by: {storedSort} </p>
+      ) : (
+        <p>show reviews by: {"Newest to oldest"}</p>
+      )}
+      <ReviewSorter sort={sort} setSort={setSort}></ReviewSorter>
       <ul className="reviews__list">
         {reviews.map((review) => {
           return (

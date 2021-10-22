@@ -15,7 +15,13 @@ const Header = ({ userImg }) => {
   }, [user]);
   return (
     <header className="Header">
-      <Link className="header__link" to="/">
+      <Link
+        className="header__link"
+        to="/"
+        onClick={() => {
+          localStorage.removeItem("sort");
+        }}
+      >
         <h1 className="header__main">GAMEKEEPER</h1>
       </Link>
       <>
@@ -26,7 +32,12 @@ const Header = ({ userImg }) => {
             alt="logged in user"
           />
         ) : (
-          <Link to="/login">
+          <Link
+            to="/login"
+            onClick={() => {
+              localStorage.removeItem("sort");
+            }}
+          >
             <button className="signIn__btn"> Sign in</button>
           </Link>
         )}

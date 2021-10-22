@@ -21,6 +21,7 @@ const Navbar = () => {
             to={`/category/${category.slug}`}
             id={category.slug}
             className="nav__link"
+            onClick={()=>{localStorage.removeItem("sort")}}
           >
             {category.slug}
           </Link>

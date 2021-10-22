@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 import { useParams } from "react-router-dom";
 
-const useReviews = () => {
+const useReviews = (sort) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -10,9 +10,10 @@ const useReviews = () => {
   const path = useParams();
 
   useEffect(() => {
+    
     setIsLoading(true);
     api
-      .fetchReviews(path, page)
+      .fetchReviews(path, page, sort)
       .then((reviewData) => {
         setIsLoading(false);
         setReviews(reviewData);
@@ -22,7 +23,7 @@ const useReviews = () => {
       .catch((err) => {
         console.dir(err);
       });
-  }, [path, page]);
+  }, [path, page, sort]);
 
   return { reviews, isLoading, setPage, page };
 };

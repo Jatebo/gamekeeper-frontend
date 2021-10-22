@@ -4,12 +4,12 @@ const Gamekeeper = axios.create({
   baseURL: "https://project-gamekeeper.herokuapp.com/api",
 });
 
-export const fetchReviews = async (path, page) => {
+export const fetchReviews = async (path, page, { sort_by, order }) => {
   const limit = 10;
   const { category } = path;
 
   const res = await Gamekeeper.get("/reviews", {
-    params: { category, limit, p: page },
+    params: { category, limit, p: page, sort_by, order },
   });
   return res.data.reviews;
 };

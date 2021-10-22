@@ -9,7 +9,6 @@ const WelcomeMsg = () => {
   const [pushedWriteReview, setPushedWriteReview] = useState(false);
 
   const path = useLocation();
-  console.log(path);
 
   useEffect(() => {
     setSignedOut(false);

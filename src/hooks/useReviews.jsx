@@ -6,11 +6,12 @@ const useReviews = (sort) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [errorType, setErrorType] = useState(0);
 
   const path = useParams();
 
   useEffect(() => {
-    
+    setErrorType(0);
     setIsLoading(true);
     api
       .fetchReviews(path, page, sort)
@@ -22,10 +23,14 @@ const useReviews = (sort) => {
       })
       .catch((err) => {
         console.dir(err);
+        if (err.response.status === 404) {
+          setErrorType(404);
+          setIsLoading(false);
+        }
       });
   }, [path, page, sort]);
 
-  return { reviews, isLoading, setPage, page };
+  return { reviews, isLoading, setPage, page, errorType };
 };
 
 export default useReviews;

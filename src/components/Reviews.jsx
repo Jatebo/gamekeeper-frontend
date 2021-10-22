@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect } from "react-router-dom";
 import "../styles/Reviews.css";
 import useReviews from "../hooks/useReviews";
 import PageButtons from "./PageButtons";
@@ -12,11 +12,16 @@ const Reviews = () => {
   const { user } = useContext(UserContext);
 
   const [sort, setSort] = useState({});
-  const { reviews, isLoading, setPage, page } = useReviews(sort);
+  const { reviews, isLoading, setPage, page, errorType } = useReviews(sort);
   const params = useParams();
+
+  console.log(reviews);
+
   const storedSort = localStorage.getItem("sort");
 
   if (isLoading) return <p>loading...</p>;
+
+  if (errorType) return <Redirect path to="/404-not-found" />;
 
   return (
     <>

@@ -26,11 +26,9 @@ const Reviews = () => {
       ) : (
         <h3>all reviews</h3>
       )}
-      {storedSort ? (
-        <p>show reviews by: {storedSort} </p>
-      ) : (
-        <p>show reviews by: {"Newest to oldest"}</p>
-      )}
+
+      <p>sort reviews by: {storedSort ? storedSort : "Newest to Oldest"} </p>
+
       <ReviewSorter sort={sort} setSort={setSort}></ReviewSorter>
       <ul className="reviews__list">
         {reviews.map((review) => {

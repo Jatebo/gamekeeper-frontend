@@ -4,13 +4,17 @@ import useReviews from "../hooks/useReviews";
 import PageButtons from "./PageButtons";
 import Voter from "./Voter";
 import ReviewSorter from "./ReviewSorter";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import ReviewDeleter from "./ReviewDeleter";
 
 const Reviews = () => {
+  const { user } = useContext(UserContext);
+
   const [sort, setSort] = useState({});
   const { reviews, isLoading, setPage, page } = useReviews(sort);
   const params = useParams();
-
+  console.log(user);
   const storedSort = localStorage.getItem("sort");
 
   if (isLoading) return <p>loading...</p>;
@@ -47,6 +51,9 @@ const Reviews = () => {
                 <h4 className="reviews_title">{review.title}</h4>
               </Link>
               <p className="reviews__author">By: {review.owner}</p>
+              {user === review.owner ? (
+                <ReviewDeleter review_id={review.review_id} />
+              ) : null}
             </li>
           );
         })}

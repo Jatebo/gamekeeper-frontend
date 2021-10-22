@@ -4,7 +4,8 @@ import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
 import Comments from "./Comments";
 import Voter from "./Voter";
-import ItemDeleter from "./ItemDeleter";
+import ItemDeleter from "./CommentDeleter";
+import ReviewDeleter from "./ReviewDeleter";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";
 
@@ -62,7 +63,7 @@ const SingleReview = () => {
         Reviewer: {singleReview.owner}
         <span>
           {user === singleReview.owner ? (
-            <ItemDeleter item_id={review_id} type="review" />
+            <ReviewDeleter review_id={review_id} />
           ) : null}
         </span>
       </h5>

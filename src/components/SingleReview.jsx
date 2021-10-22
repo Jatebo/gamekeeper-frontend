@@ -4,7 +4,6 @@ import { fetchSingleReview } from "../utils/api";
 import "../styles/SingleReview.css";
 import Comments from "./Comments";
 import Voter from "./Voter";
-import ItemDeleter from "./CommentDeleter";
 import ReviewDeleter from "./ReviewDeleter";
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from "react";

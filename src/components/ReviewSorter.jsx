@@ -1,7 +1,4 @@
 const ReviewSorter = ({ setSort }) => {
-
-
-
   const selectSort = (e) => {
     e.preventDefault();
     setSort(JSON.parse(e.target.value));
@@ -39,7 +36,6 @@ const ReviewSorter = ({ setSort }) => {
         </option>
         <option
           key="title-desc"
-          label="Title desc"
           value={JSON.stringify({ sort_by: "title", order: "ASC" })}
         >
           Title A-Z
@@ -58,7 +54,6 @@ const ReviewSorter = ({ setSort }) => {
         </option>
         <option
           key="designer-asc"
-          label="Designer asc"
           value={JSON.stringify({ sort_by: "designer", order: "DESC" })}
         >
           Designer Z-A

@@ -7,9 +7,15 @@ import { CategoriesContext } from "../contexts/CategoriesContext";
 const Navbar = () => {
   const { categories, setCategories } = useContext(CategoriesContext);
   useEffect(() => {
+    let isMounted = true;
     fetchCategories().then((result) => {
-      setCategories(result);
+      if (isMounted) {
+        setCategories(result);
+      }
     });
+    return () => {
+      isMounted = false;
+    };
   }, [setCategories]);
 
   return (
@@ -21,7 +27,9 @@ const Navbar = () => {
             to={`/category/${category.slug}`}
             id={category.slug}
             className="nav__link"
-            onClick={()=>{localStorage.removeItem("sort")}}
+            onClick={() => {
+              localStorage.removeItem("sort");
+            }}
           >
             {category.slug}
           </Link>

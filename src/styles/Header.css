@@ -1,6 +1,6 @@
 .Header {
   display: grid;
-  background-color: black;
+  background-color: #1d1e18ff;
   width: 100%;
   grid-template-columns: 1fr 55px;
   grid-template-areas: "header  logo";
@@ -14,8 +14,8 @@
 .header__main {
   font-family: "Press Start 2P", cursive, arial;
   font-size: 24px;
-  color: black;
-  background-color: black;
+  color: #000000;
+  background-color: #1d1e18ff;
   width: 100%;
   margin: 0;
   padding: 5px 0px;
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-shadow: 0px 0px 20px lime;
+  text-shadow: 0px 2px 5px rgb(97, 245, 0), 0px 0px 15px #8de969ff;
 }
 
 .login__img {
@@ -32,7 +32,7 @@
   width: 30px;
   grid-area: logo;
   margin: auto;
-  box-shadow: 0px 0px 20px lime;
+  box-shadow: 0px 0px 10px rgb(97, 245, 0), 0px 0px 30px #8de969ff;
 }
 
 .signIn__btn {
@@ -40,10 +40,9 @@
   font-family: "Press Start 2P", cursive, arial;
   font-size: 9px;
   color: lime;
-  text-shadow: 0px 0px 5px lime;
-  background-color: rgba(0, 255, 0, 0.434);
-  border-radius: 50%;
+  text-shadow: 0px 0px 10px rgb(97, 245, 0), 0px 0px 30px #8de969ff;
+  background-color: rgba(29, 30, 24, 1);
+  border-radius: 45%;
   width: 50px;
   height: 100%;
-  /* box-shadow: 0px 0px 20px lime; */
 }

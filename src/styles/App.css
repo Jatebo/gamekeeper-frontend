@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-}
-
-.welcome__msg {
-  text-decoration: underline red;
+  background: rgb(98, 255, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(98, 255, 0, 1) 32%,
+    rgba(39, 101, 0, 1) 100%
+  );
 }

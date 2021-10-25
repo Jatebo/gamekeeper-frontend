@@ -37,7 +37,7 @@ const Reviews = () => {
       <ul className="reviews__list">
         {reviews.map((review) => {
           return (
-            <li key={review.review_id}>
+            <li key={review.review_id} className="single__review">
               <Voter
                 item_id={review.review_id}
                 votes={review.votes}
@@ -51,6 +51,7 @@ const Reviews = () => {
                   alt={review.title}
                 />
                 <h4 className="reviews_title">{review.title}</h4>
+                <h6>{review.review_id}</h6>
               </Link>
               <p className="reviews__author">By: {review.owner}</p>
               {user === review.owner ? (

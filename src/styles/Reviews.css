@@ -1,5 +1,11 @@
 .reviews__list {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  padding: 20px;
 }
 
 .reviews__img {
@@ -8,4 +14,20 @@
 
 .review__noComment {
   color: black;
+}
+
+.single__review {
+  box-sizing: border-box;
+  align-self: center;
+  border: groove 2px red;
+  background-color: seashell;
+  margin: 5px;
+  width: 300px;
+  padding: 5px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.reviews__voter {
+  grid-area: voter;
 }

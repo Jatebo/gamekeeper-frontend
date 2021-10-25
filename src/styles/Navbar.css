@@ -1,26 +1,25 @@
-
 .Navbar {
-    background-color: maroon;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    gap: 2px 10px;
-    height: auto;
-    padding: auto;
-  }
-  
-  .nav__link {
-    display: flex;
-    box-sizing: border-box;
-    justify-content: space-between;
-    padding: 0 10px 0 10px;
-    background-color: lightgoldenrodyellow;
-    flex-grow: 0;
-    border-radius: 2px;
-    text-decoration: none;
-    font-style: bold;
-    font-variant: small-caps;
-  }
+  background-color: rgba(97, 245, 0, 01);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 2px 10px;
+  height: auto;
+  padding: auto;
+}
+
+.nav__link {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+  background-color: lightgoldenrodyellow;
+  flex-grow: 0;
+  border-radius: 2px;
+  text-decoration: none;
+  font-style: bold;
+  font-variant: small-caps;
+}

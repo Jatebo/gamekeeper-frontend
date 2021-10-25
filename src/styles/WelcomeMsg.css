@@ -1,3 +1,39 @@
+.container {
+  display: grid;
+  background-color: #1d1e18ff;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-areas: "reviewBtn msg signOutBtn";
+  padding: 5px;
+  border-bottom: 2px solid rgb(97, 245, 0);
+}
+
+.welcome__msg {
+  margin: 0;
+  grid-area: msg;
+  font-size: 14px;
+  color: rgb(97, 245, 0);
+  text-shadow: 0px 2px 5px rgb(97, 245, 0), 0px 0px 60px rgb(97, 245, 0);
+}
+
 .button__hide {
   display: none;
+}
+
+#review__btn {
+  grid-area: reviewBtn;
+  margin: auto;
+  font-size: 0.7rem;
+}
+
+#signOut__btn {
+  grid-area: signOutBtn;
+  margin-right: 0px;
+  width: 50px;
+  font-size: 0.6rem;
+}
+
+button {
+  margin: auto;
+  font-size: 0.7rem;
+  height: 20px;
 }

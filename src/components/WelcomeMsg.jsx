@@ -30,11 +30,12 @@ const WelcomeMsg = () => {
   }
 
   return (
-    <div className="welcome__msg">
+    <div className="container">
       {user ? (
-        <div>
-          <p>Welcome, {user}</p>
+        <>
+          <p className="welcome__msg">Welcome, {user}</p>
           <button
+            id="review__btn"
             onClick={() => {
               setPushedWriteReview(true);
             }}
@@ -45,10 +46,13 @@ const WelcomeMsg = () => {
             {" "}
             Write review
           </button>
-          <button onClick={() => handleSignOut()}> sign out</button>
-        </div>
+          <button id="signOut__btn" onClick={() => handleSignOut()}>
+            {" "}
+            sign out
+          </button>
+        </>
       ) : (
-        <p>Welcome, guest</p>
+        <p className="welcome__msg">Welcome, guest</p>
       )}
     </div>
   );

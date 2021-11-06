@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");
     if (prevLoggedInUser) {
-      const userObj = JSON.parse(localStorage.getItem("loggedInUser"));
+      const userObj = JSON.parse(prevLoggedInUser);
       setUser(userObj.username);
     }
   }, []);
